@@ -12,6 +12,14 @@ namespace MazeSolvingAlgoritm.MazeMain {
     public class Maze {
         private Node[,] maze;
 
+        private Node _startNode;
+
+        public Node startNode {
+            get {
+                return _startNode;
+            }
+        }
+
         public int width { get; private set; }
         public int height { get; private set; }
 
@@ -32,9 +40,10 @@ namespace MazeSolvingAlgoritm.MazeMain {
 
             for (int i = 0; i < width; i++)
                 for (int j = 0; j < height; j++)
-                    if (i == 1 && j == 0)
+                    if (i == 3 && j == 0) {
                         maze[i, j] = new StartNode(i, j);
-                    else if (i == width - 2 && j == height - 1)
+                        _startNode = maze[i, j];
+                    } else if (i == width - 4 && j == height - 1)
                         maze[i, j] = new EndNode(i, j);
                     else if (i == 0 || j == 0 || i == width - 1 || j == height - 1)
                         maze[i, j] = new Wall(i, j);
@@ -78,12 +87,27 @@ namespace MazeSolvingAlgoritm.MazeMain {
         public void ResetMaze() {
             solved = false;
 
-            for(int i = 0; i < width; i++) {
-                for(int j = 0; j < height; j++) {
+            for (int i = 0; i < width; i++) {
+                for (int j = 0; j < height; j++) {
                     maze[i, j].distance = int.MaxValue;
                     maze[i, j].previous = null;
                 }
             }
+        }
+
+        public void ToggleNode(int x, int y) {
+            Node n = maze[x, y];
+
+            if (n is Wall)
+                maze[x, y] = new Path(x, y, 1);
+            else if (n is Path)
+                maze[x, y] = new Wall(x, y);
+        }
+
+        public void ToggleNode(int x1, int y1, int x2, int y2) {
+            for (int i = x1; x1 < x2 ? i <= x2 : i >= x2; i += x1 < x2 ? 1 : -1)
+                for (int j = y1; y1 < y2 ?  j <= y2 : j >= y2; j += y1 < y2 ? 1 : -1)
+                    ToggleNode(i, j);
         }
     }
 }

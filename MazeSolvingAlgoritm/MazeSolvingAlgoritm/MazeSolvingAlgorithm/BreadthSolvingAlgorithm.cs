@@ -13,11 +13,13 @@ namespace MazeSolvingAlgoritm.MazeSolvingAlgorithm {
             if (maze == null)
                 return;
             else {
-                maze.GetNode(1, 0).distance = 0;
+                //maze.GetNode(1, 0).distance = 0;
+                maze.startNode.distance = 0;
 
                 q = new Queue<Node>();
 
-                q.Enqueue(maze.GetNode(1, 0));
+                //q.Enqueue(maze.GetNode(1, 0));
+                q.Enqueue(maze.startNode);
 
                 while (!q.isEmpty) {
                     Node current = q.Dequeue();

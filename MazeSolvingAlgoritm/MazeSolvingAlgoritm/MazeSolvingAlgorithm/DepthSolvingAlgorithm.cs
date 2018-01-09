@@ -11,8 +11,10 @@ namespace MazeSolvingAlgoritm.MazeSolvingAlgorithm {
             if (maze == null)
                 return;
             else {
-                maze.GetNode(1, 0).distance = 0;
-                SolveMaze(maze, 1, 0);
+                maze.startNode.distance = 0;
+                //maze.GetNode(1, 0).distance = 0;
+                SolveMaze(maze, maze.startNode.x, maze.startNode.y);
+                //SolveMaze(maze, 1, 0);
                 //SolveMaze(maze, maze.GetNode(1, 0));
             }
         }

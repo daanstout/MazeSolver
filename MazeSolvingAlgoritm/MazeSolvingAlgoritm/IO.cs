@@ -16,7 +16,7 @@ namespace MazeSolvingAlgoritm {
 
             maze.Draw(drawing);
 
-            img.Save("C:\\Users\\Daan\\Desktop\\maze.png");
+            img.Save("C:\\Users\\Daans\\Desktop\\maze.png");
         }
     }
 }

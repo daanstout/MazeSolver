@@ -25,6 +25,8 @@ namespace MazeSolvingAlgoritm {
 
         private int[] validDimensions = new int[7] { 9, 17, 33, 65, 129, 257, 513 };
 
+        private Point mouseDown;
+
         public MazeSolver() {
             InitializeComponent();
 
@@ -216,6 +218,14 @@ namespace MazeSolvingAlgoritm {
 
         private void exportMazeImageButton_Click(object sender, EventArgs e) {
             IO.SaveMaze(maze);
+        }
+
+        private void mazePictureBox_MouseDown(object sender, MouseEventArgs e) {
+            mouseDown = e.Location;
+        }
+
+        private void mazePictureBox_MouseUp(object sender, MouseEventArgs e) {
+            maze.ToggleNode(mouseDown.X / Global.mazeSize, mouseDown.Y / Global.mazeSize, e.Location.X / Global.mazeSize, e.Location.Y / Global.mazeSize);
         }
     }
 }

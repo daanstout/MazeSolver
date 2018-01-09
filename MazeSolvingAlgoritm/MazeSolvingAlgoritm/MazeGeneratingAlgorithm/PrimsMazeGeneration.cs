@@ -28,6 +28,8 @@ namespace MazeSolvingAlgoritm.MazeGeneratingAlgorithm {
                 for (int j = 1; j < maze.height; j += 2) {
                     if (i == 1 && j == 1)
                         continue;
+                    if (maze.GetNode(i, j) == null)
+                        continue;
                     toAdd.Add(maze.GetNode(i, j));
                 }
             }

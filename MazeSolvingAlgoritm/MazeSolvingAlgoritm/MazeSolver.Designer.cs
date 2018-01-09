@@ -77,6 +77,8 @@
             this.mazePictureBox.TabIndex = 0;
             this.mazePictureBox.TabStop = false;
             this.mazePictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.mazePictureBox_Paint);
+            this.mazePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mazePictureBox_MouseDown);
+            this.mazePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mazePictureBox_MouseUp);
             // 
             // solveMazeButton
             // 
