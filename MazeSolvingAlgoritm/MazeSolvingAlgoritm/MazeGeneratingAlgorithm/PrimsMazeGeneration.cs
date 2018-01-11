@@ -77,11 +77,11 @@ namespace MazeSolvingAlgoritm.MazeGeneratingAlgorithm {
 
                 Node middle = maze.GetNode((current.x + next.x) / 2, (current.y + next.y) / 2);
 
-                next.previous = middle;
-                middle.previous = current;
+                //next.previous = middle;
+                //middle.previous = current;
 
-                next.distance = current.distance + 2;
-                middle.distance = current.distance + 1;
+                //next.distance = current.distance + 2;
+                //middle.distance = current.distance + 1;
 
                 maze.SetNode(middle.x, middle.y, false);
                 maze.SetNode(next.x, next.y, false);

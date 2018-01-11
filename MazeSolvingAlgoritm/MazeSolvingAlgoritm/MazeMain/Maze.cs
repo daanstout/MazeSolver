@@ -35,12 +35,13 @@ namespace MazeSolvingAlgoritm.MazeMain {
         }
 
         private void initMaze() {
+            Node start = maze == null ? new StartNode(1, 0) : new StartNode(_startNode.x, _startNode.y);
             solved = false;
             maze = new Node[width, height];
 
             for (int i = 0; i < width; i++)
                 for (int j = 0; j < height; j++)
-                    if (i == 3 && j == 0) {
+                    if (i == start.x && j == start.y) {
                         maze[i, j] = new StartNode(i, j);
                         _startNode = maze[i, j];
                     } else if (i == width - 4 && j == height - 1)
@@ -96,6 +97,9 @@ namespace MazeSolvingAlgoritm.MazeMain {
         }
 
         public void ToggleNode(int x, int y) {
+            if (x < 0 || x > width - 1 || y < 0 || y > height - 1)
+                return;
+
             Node n = maze[x, y];
 
             if (n is Wall)
@@ -106,8 +110,20 @@ namespace MazeSolvingAlgoritm.MazeMain {
 
         public void ToggleNode(int x1, int y1, int x2, int y2) {
             for (int i = x1; x1 < x2 ? i <= x2 : i >= x2; i += x1 < x2 ? 1 : -1)
-                for (int j = y1; y1 < y2 ?  j <= y2 : j >= y2; j += y1 < y2 ? 1 : -1)
+                for (int j = y1; y1 < y2 ? j <= y2 : j >= y2; j += y1 < y2 ? 1 : -1)
                     ToggleNode(i, j);
+        }
+
+        public void MoveStartNode(int x, int y) {
+            //if ((x % 2 == 0 || y % 2 == 0) && !(x == 0 || x == width - 1 || y == 0 || y == height - 1))
+            //    return;
+
+            if (_startNode.x == 0 || _startNode.x == width - 1 || _startNode.y == 0 || _startNode.y == height - 1)
+                maze[_startNode.x, _startNode.y] = new Wall(_startNode.x, _startNode.y);
+            else
+                maze[_startNode.x, _startNode.y] = new Path(_startNode.x, _startNode.y, 1);
+
+            _startNode = maze[x, y] = new StartNode(x, y);
         }
     }
 }

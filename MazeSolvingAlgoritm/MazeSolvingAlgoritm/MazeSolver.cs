@@ -85,16 +85,20 @@ namespace MazeSolvingAlgoritm {
                         foreach (int i in validDimensions) {
                             if (Math.Abs(i - maze.width) < Math.Abs(tempWidth - maze.width))
                                 tempWidth = i;
-                            
+
                             if (Math.Abs(i - maze.height) < Math.Abs(tempHeight - maze.height))
                                 tempHeight = i;
                         }
                         mazeWidthNumeric.Value = tempWidth;
                         mazeHeightNumeric.Value = tempHeight;
+                        Node start = maze.startNode;
                         maze = new Maze(tempWidth, tempHeight);
+                        maze.MoveStartNode(start.x, start.y);
                     }
                 }
             }
+            Console.WriteLine(maze.startNode);
+
             solveMazeButton.Enabled = createMazeButton.Enabled = generateMazeButton.Enabled = resetMazeButton.Enabled = false;
 
             nextStepButton.Enabled = true;
@@ -225,7 +229,12 @@ namespace MazeSolvingAlgoritm {
         }
 
         private void mazePictureBox_MouseUp(object sender, MouseEventArgs e) {
-            maze.ToggleNode(mouseDown.X / Global.mazeSize, mouseDown.Y / Global.mazeSize, e.Location.X / Global.mazeSize, e.Location.Y / Global.mazeSize);
+            if (e.Button == MouseButtons.Left)
+                maze.ToggleNode(mouseDown.X / Global.mazeSize, mouseDown.Y / Global.mazeSize, e.Location.X / Global.mazeSize, e.Location.Y / Global.mazeSize);
+            else if (e.Button == MouseButtons.Right)
+                maze.MoveStartNode(e.Location.X / Global.mazeSize, e.Location.Y / Global.mazeSize);
+
+            mazePictureBox.Invalidate();
         }
     }
 }
