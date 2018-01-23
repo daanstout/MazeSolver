@@ -63,10 +63,14 @@
     </Compile>
     <Compile Include="MazeMain\Maze.cs" />
     <Compile Include="MazeMain\Node.cs" />
+    <Compile Include="MazeSolvingAlgorithm\AStarEarlyExitSolvingAlgorithm.cs" />
+    <Compile Include="MazeSolvingAlgorithm\AStarSolvingAlgorithm.cs" />
     <Compile Include="MazeSolvingAlgorithm\BreadthSolvingAlgorithm.cs" />
     <Compile Include="MazeSolvingAlgorithm\DepthSolvingAlgorithm.cs" />
+    <Compile Include="MazeSolvingAlgorithm\EarlyExitSolvingAlgorithm.cs" />
     <Compile Include="MazeSolvingAlgorithm\IMazeSolvingAlgorithm.cs" />
     <Compile Include="MazeSolvingAlgorithm\WallRunnerSolvingAlgorithm.cs" />
+    <Compile Include="PriorityQueue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queue.cs" />

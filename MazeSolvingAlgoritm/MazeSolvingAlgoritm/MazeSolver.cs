@@ -36,9 +36,26 @@ namespace MazeSolvingAlgoritm {
 
             solvingAlgorithmsComboBox.Items.Add("Depth First");
             solvingAlgorithmsComboBox.Items.Add("Breadth First");
+            solvingAlgorithmsComboBox.Items.Add("Breadth First Early Exit");
             solvingAlgorithmsComboBox.Items.Add("Wall Runner (Breadth Variant)");
+            solvingAlgorithmsComboBox.Items.Add("A*");
+            solvingAlgorithmsComboBox.Items.Add("A* Early Exit");
 
             instance = this;
+
+            //PriorityQueue q = new PriorityQueue();
+
+            //q.Insert(new Path(1, 1, 1), 5);
+            //q.Insert(new Path(1, 1, 1), 10);
+            //q.Insert(new Path(1, 1, 1), 3);
+            //q.Insert(new Path(1, 1, 1), 1);
+            //q.Insert(new Path(1, 1, 1), 2);
+
+            //q.PrintHeap();
+
+            //Console.WriteLine("\n" + q.GetHighestPriority() + "\n");
+
+            //q.PrintHeap();
         }
 
         private void mazePictureBox_Paint(object sender, PaintEventArgs e) {
@@ -117,7 +134,16 @@ namespace MazeSolvingAlgoritm {
                     solving = new BreadthSolvingAlgorithm();
                     break;
                 case 2:
+                    solving = new EarlyExitSolvingAlgorithm();
+                    break;
+                case 3:
                     solving = new WallRunnerSolvingAlgorithm();
+                    break;
+                case 4:
+                    solving = new AStarSolvingAlgorithm();
+                    break;
+                case 5:
+                    solving = new AStarEarlyExitSolvingAlgorithm();
                     break;
             }
         }

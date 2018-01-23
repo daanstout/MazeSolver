@@ -20,6 +20,14 @@ namespace MazeSolvingAlgoritm.MazeMain {
             }
         }
 
+        private Node _endNode;
+
+        public Node endNode {
+            get {
+                return _endNode;
+            }
+        }
+
         public int width { get; private set; }
         public int height { get; private set; }
 
@@ -36,6 +44,7 @@ namespace MazeSolvingAlgoritm.MazeMain {
 
         private void initMaze() {
             Node start = maze == null ? new StartNode(1, 0) : new StartNode(_startNode.x, _startNode.y);
+            Node end = maze == null ? new EndNode(width - 2, height - 1) : new EndNode(_endNode.x, _endNode.y);
             solved = false;
             maze = new Node[width, height];
 
@@ -44,9 +53,10 @@ namespace MazeSolvingAlgoritm.MazeMain {
                     if (i == start.x && j == start.y) {
                         maze[i, j] = new StartNode(i, j);
                         _startNode = maze[i, j];
-                    } else if (i == width - 4 && j == height - 1)
+                    } else if (i == end.x && j == end.y) {
                         maze[i, j] = new EndNode(i, j);
-                    else if (i == 0 || j == 0 || i == width - 1 || j == height - 1)
+                        _endNode = maze[i, j];
+                    } else if (i == 0 || j == 0 || i == width - 1 || j == height - 1)
                         maze[i, j] = new Wall(i, j);
                     else
                         maze[i, j] = new Path(i, j, 1);
