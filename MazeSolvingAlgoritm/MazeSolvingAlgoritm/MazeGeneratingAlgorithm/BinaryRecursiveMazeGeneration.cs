@@ -55,7 +55,6 @@ namespace MazeSolvingAlgoritm.MazeGeneratingAlgorithm {
                     GenerateMaze(maze, width / 2, height, x + (width / 2) + 1, y, !horizontal);
                 }
             }
-
         }
     }
 }
