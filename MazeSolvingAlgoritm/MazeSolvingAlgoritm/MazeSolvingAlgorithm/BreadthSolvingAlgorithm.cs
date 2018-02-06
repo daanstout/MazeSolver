@@ -31,8 +31,11 @@ namespace MazeSolvingAlgoritm.MazeSolvingAlgorithm {
                         while (!MazeSolver.doStep) { }
                     MazeSolver.doStep = false;
 
-                    if (current is EndNode)
+                    if (current is EndNode) {
                         Maze.solved = true;
+                        if (Global.earlyExit)
+                            return;
+                    }
 
                     if (current.y > 0) {
                         if (!maze.isWall(current.x, current.y - 1) && maze.GetNode(current.x, current.y - 1).distance > current.distance + maze.GetNode(current.x, current.y - 1).weight) {

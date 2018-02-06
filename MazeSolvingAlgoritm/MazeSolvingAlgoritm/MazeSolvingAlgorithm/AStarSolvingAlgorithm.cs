@@ -29,8 +29,11 @@ namespace MazeSolvingAlgoritm.MazeSolvingAlgorithm {
                         while (!MazeSolver.doStep) { }
                     MazeSolver.doStep = false;
 
-                    if (current is EndNode)
+                    if (current is EndNode) {
                         Maze.solved = true;
+                        if (Global.earlyExit)
+                            return;
+                    }
 
                     Node next;
 

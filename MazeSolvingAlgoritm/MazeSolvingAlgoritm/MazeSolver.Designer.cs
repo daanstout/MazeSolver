@@ -55,6 +55,7 @@
             this.mazeButtonsPanel = new System.Windows.Forms.Panel();
             this.resetMazeButton = new System.Windows.Forms.Button();
             this.exportMazeImageButton = new System.Windows.Forms.Button();
+            this.earlyExitChecbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.mazePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timerIntervalNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mazeSizeNumeric)).BeginInit();
@@ -341,7 +342,7 @@
             // nextStepButton
             // 
             this.nextStepButton.Enabled = false;
-            this.nextStepButton.Location = new System.Drawing.Point(1070, 466);
+            this.nextStepButton.Location = new System.Drawing.Point(1071, 486);
             this.nextStepButton.Name = "nextStepButton";
             this.nextStepButton.Size = new System.Drawing.Size(75, 23);
             this.nextStepButton.TabIndex = 20;
@@ -356,7 +357,7 @@
             this.newMazePanel.Controls.Add(this.createMazeButton);
             this.newMazePanel.Controls.Add(this.mazeHeightLabel);
             this.newMazePanel.Controls.Add(this.mazeHeightNumeric);
-            this.newMazePanel.Location = new System.Drawing.Point(1048, 341);
+            this.newMazePanel.Location = new System.Drawing.Point(1048, 364);
             this.newMazePanel.Name = "newMazePanel";
             this.newMazePanel.Size = new System.Drawing.Size(128, 114);
             this.newMazePanel.TabIndex = 1;
@@ -367,7 +368,7 @@
             this.numericOptionsPanel.Controls.Add(this.timerIntervalNumeric);
             this.numericOptionsPanel.Controls.Add(this.mazeSizeNumeric);
             this.numericOptionsPanel.Controls.Add(this.mazeSizeLabel);
-            this.numericOptionsPanel.Location = new System.Drawing.Point(1048, 273);
+            this.numericOptionsPanel.Location = new System.Drawing.Point(1048, 296);
             this.numericOptionsPanel.Name = "numericOptionsPanel";
             this.numericOptionsPanel.Size = new System.Drawing.Size(130, 56);
             this.numericOptionsPanel.TabIndex = 1;
@@ -378,19 +379,20 @@
             this.algorithmSelectionPanel.Controls.Add(this.solvingAlgorithmsComboBox);
             this.algorithmSelectionPanel.Controls.Add(this.generationAlgorithmComboBox);
             this.algorithmSelectionPanel.Controls.Add(this.solvingLabel);
-            this.algorithmSelectionPanel.Location = new System.Drawing.Point(1048, 178);
+            this.algorithmSelectionPanel.Location = new System.Drawing.Point(1048, 201);
             this.algorithmSelectionPanel.Name = "algorithmSelectionPanel";
             this.algorithmSelectionPanel.Size = new System.Drawing.Size(132, 89);
             this.algorithmSelectionPanel.TabIndex = 1;
             // 
             // checkboxPanel
             // 
+            this.checkboxPanel.Controls.Add(this.earlyExitChecbox);
             this.checkboxPanel.Controls.Add(this.pauseCheckBox);
             this.checkboxPanel.Controls.Add(this.showDistanceCheckBox);
             this.checkboxPanel.Controls.Add(this.noDelayCheckbox);
             this.checkboxPanel.Location = new System.Drawing.Point(1057, 109);
             this.checkboxPanel.Name = "checkboxPanel";
-            this.checkboxPanel.Size = new System.Drawing.Size(101, 63);
+            this.checkboxPanel.Size = new System.Drawing.Size(101, 86);
             this.checkboxPanel.TabIndex = 1;
             // 
             // mazeButtonsPanel
@@ -417,13 +419,24 @@
             // exportMazeImageButton
             // 
             this.exportMazeImageButton.Enabled = false;
-            this.exportMazeImageButton.Location = new System.Drawing.Point(1071, 505);
+            this.exportMazeImageButton.Location = new System.Drawing.Point(1071, 515);
             this.exportMazeImageButton.Name = "exportMazeImageButton";
             this.exportMazeImageButton.Size = new System.Drawing.Size(75, 23);
             this.exportMazeImageButton.TabIndex = 21;
             this.exportMazeImageButton.Text = "Export Maze";
             this.exportMazeImageButton.UseVisualStyleBackColor = true;
             this.exportMazeImageButton.Click += new System.EventHandler(this.exportMazeImageButton_Click);
+            // 
+            // earlyExitChecbox
+            // 
+            this.earlyExitChecbox.AutoSize = true;
+            this.earlyExitChecbox.Location = new System.Drawing.Point(3, 66);
+            this.earlyExitChecbox.Name = "earlyExitChecbox";
+            this.earlyExitChecbox.Size = new System.Drawing.Size(69, 17);
+            this.earlyExitChecbox.TabIndex = 20;
+            this.earlyExitChecbox.Text = "Early Exit";
+            this.earlyExitChecbox.UseVisualStyleBackColor = true;
+            this.earlyExitChecbox.CheckedChanged += new System.EventHandler(this.earlyExitChecbox_CheckedChanged);
             // 
             // MazeSolver
             // 
@@ -492,6 +505,7 @@
         private System.Windows.Forms.Panel mazeButtonsPanel;
         private System.Windows.Forms.Button resetMazeButton;
         private System.Windows.Forms.Button exportMazeImageButton;
+        private System.Windows.Forms.CheckBox earlyExitChecbox;
     }
 }
 

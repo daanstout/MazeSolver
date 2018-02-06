@@ -36,10 +36,8 @@ namespace MazeSolvingAlgoritm {
 
             solvingAlgorithmsComboBox.Items.Add("Depth First");
             solvingAlgorithmsComboBox.Items.Add("Breadth First");
-            solvingAlgorithmsComboBox.Items.Add("Breadth First Early Exit");
             solvingAlgorithmsComboBox.Items.Add("Wall Runner (Breadth Variant)");
             solvingAlgorithmsComboBox.Items.Add("A*");
-            solvingAlgorithmsComboBox.Items.Add("A* Early Exit");
 
             instance = this;
 
@@ -114,7 +112,6 @@ namespace MazeSolvingAlgoritm {
                     }
                 }
             }
-            Console.WriteLine(maze.startNode);
 
             solveMazeButton.Enabled = createMazeButton.Enabled = generateMazeButton.Enabled = resetMazeButton.Enabled = false;
 
@@ -134,16 +131,10 @@ namespace MazeSolvingAlgoritm {
                     solving = new BreadthSolvingAlgorithm();
                     break;
                 case 2:
-                    solving = new EarlyExitSolvingAlgorithm();
-                    break;
-                case 3:
                     solving = new WallRunnerSolvingAlgorithm();
                     break;
-                case 4:
+                case 3:
                     solving = new AStarSolvingAlgorithm();
-                    break;
-                case 5:
-                    solving = new AStarEarlyExitSolvingAlgorithm();
                     break;
             }
         }
@@ -261,6 +252,10 @@ namespace MazeSolvingAlgoritm {
                 maze.MoveStartNode(e.Location.X / Global.mazeSize, e.Location.Y / Global.mazeSize);
 
             mazePictureBox.Invalidate();
+        }
+
+        private void earlyExitChecbox_CheckedChanged(object sender, EventArgs e) {
+            Global.earlyExit = earlyExitChecbox.Checked;
         }
     }
 }

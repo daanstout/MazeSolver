@@ -23,6 +23,9 @@ namespace MazeSolvingAlgoritm.MazeSolvingAlgorithm {
             if (x < 0 || x == maze.width || y < 0 || y == maze.height)
                 return;
 
+            if (Maze.solved && Global.earlyExit)
+                return;
+
             if (!Global.noDelay)
                 while (!MazeSolver.doStep) { }
             MazeSolver.doStep = false;
